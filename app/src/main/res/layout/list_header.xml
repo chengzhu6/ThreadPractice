@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list_header"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/list_header_height"
     android:background="@drawable/list_item_style"
     android:layout_margin="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
