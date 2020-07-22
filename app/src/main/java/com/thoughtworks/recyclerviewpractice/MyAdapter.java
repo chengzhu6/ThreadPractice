@@ -1,19 +1,26 @@
 package com.thoughtworks.recyclerviewpractice;
 
+import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private final List<Data> data;
+    private final Context context;
 
-    public MyAdapter(List<Data> data) {
+    public MyAdapter(List<Data> data, Context context) {
+        this.context = context;
         this.data = data;
     }
 
@@ -48,7 +55,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Data dataItem = this.data.get(position);
         if (dataItem != null) {
-            holder.setData(dataItem);
+            holder.setData(dataItem, context);
         }
     }
 
@@ -57,11 +64,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         return data.size();
     }
 
+
     public static class ListItemViewHolder extends MyViewHolder {
 
         private final TextView titleTextView;
         private final TextView descriptionTextView;
         private final TextView numberTextView;
+        private final ImageView imageView;
 
 
         public ListItemViewHolder(@NonNull View itemView) {
@@ -69,13 +78,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
             titleTextView = itemView.findViewById(R.id.title);
             descriptionTextView = itemView.findViewById(R.id.description);
             numberTextView = itemView.findViewById(R.id.number);
+            imageView = itemView.findViewById(R.id.item_image);
         }
 
         @Override
-        public void setData(Data data) {
+        public void setData(Data data, Context context) {
             titleTextView.setText(data.title);
             descriptionTextView.setText(data.description);
             numberTextView.setText(String.valueOf(data.number));
+            Glide.with((Activity) context)
+                    .load(data.imageUrl)
+                    .into(imageView);
         }
     }
 
@@ -87,7 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         }
 
         @Override
-        public void setData(Data data) {
+        public void setData(Data data, Context context) {
             titleTextView.setText(data.title);
         }
     }

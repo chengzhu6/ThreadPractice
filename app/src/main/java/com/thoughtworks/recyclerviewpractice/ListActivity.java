@@ -17,7 +17,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         RecyclerView recyclerView = findViewById(R.id.recycler_view_list);
         List<Data> data = Data.createMockData();
-        MyAdapter myAdapter = new MyAdapter(data);
+        MyAdapter myAdapter = new MyAdapter(data, this);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -32,19 +32,22 @@ class Data {
     public String description;
     public int number;
     public int type;
+    public String imageUrl;
 
-    public Data(String title, String description, int number, int type) {
+    public Data(String title, String description, int number, int type, String imageUrl) {
         this.title = title;
         this.description = description;
         this.number = number;
         this.type = type;
+        this.imageUrl = imageUrl;
     }
 
     public static List<Data> createMockData() {
         ArrayList<Data> data = new ArrayList<>();
-        data.add(new Data("This is header", null, 0, TYPE_TITLE));
-        for (int i = 0; i < 15; i++) {
-            data.add(new Data("title" + i, "desc" + i, i, TYPE_ITEM));
+        data.add(new Data("This is header", null, 0, TYPE_TITLE, null));
+        String baseUrl = "https://loremflickr.com/180/180?lock=";
+        for (int i = 1; i < 101; i++) {
+            data.add(new Data("title" + i, "desc" + i, i, TYPE_ITEM, baseUrl + i));
         }
         return data;
     }
