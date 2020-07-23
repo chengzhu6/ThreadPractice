@@ -2,4 +2,5 @@
     <string name="app_name">RecyclerViewPractice</string>
     <string name="recyclerview">RecyclerView</string>
     <string name="image">image</string>
+    <string name="thread_practice">ThreadPractice</string>
 </resources>
