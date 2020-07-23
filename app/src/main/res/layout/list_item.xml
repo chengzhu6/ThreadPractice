@@ -3,7 +3,7 @@
     android:id="@+id/list_item"
     android:layout_width="match_parent"
     android:background="@drawable/list_item_style"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/list_item_margin"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -11,7 +11,7 @@
         android:id="@+id/item_image"
         android:layout_width="42dp"
         android:layout_height="42dp"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/list_item_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/image" />
@@ -21,7 +21,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/list_item_margin"
         app:layout_constraintStart_toEndOf="@+id/item_image"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +29,7 @@
         android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/list_item_margin"
         app:layout_constraintBaseline_toBaselineOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/list_item_margin"
         app:layout_constraintStart_toEndOf="@id/item_image"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
